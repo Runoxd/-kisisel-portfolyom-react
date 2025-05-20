@@ -14,9 +14,11 @@ import {
     FaFacebook,
     FaLinkedin,
     FaInstagram,
+    FaSun,
+    FaMoon
 } from 'react-icons/fa';
 
-function Sidebar() {
+function Sidebar({theme, toggleTheme}) {
 
     const githubUsername = "Runoxd";
     const twitterUsername = "oonur_ozdmr";
@@ -104,6 +106,20 @@ function Sidebar() {
                         </a>
                     )}
                 </div>
+                {/* ----- TEMA DEĞİŞTİRME BUTONU ----- */}
+                <button
+                         onClick={toggleTheme} // App.js'den gelen fonksiyonu çağırır
+                        className="theme-toggle-button"
+                         title={theme === 'light' ? 'Koyu Moda Geç' : 'Açık Moda Geç'} // Buton üzerine gelince çıkan yazı
+                         aria-label="Tema Değiştir" // Erişilebilirlik için
+                >{theme === 'light' ? <FaMoon /> : <FaSun />} {/* Mevcut temaya göre ikonu gösterir */}
+                    <span className="theme-toggle-text"> {/* İkonun yanındaki metin için */}
+                        {theme === 'light' ? 'Koyu Mod' : 'Açık Mod'} {/* Mevcut temaya göre metni gösterir */}
+                    </span>
+                </button>
+
+
+
                 <p className="copyright-sidebar">
                     &copy; {new Date().getFullYear()} Muhammet Onur Özdemir.
                 </p>

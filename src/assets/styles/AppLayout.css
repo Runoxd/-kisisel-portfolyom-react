@@ -11,6 +11,8 @@
     min-height: 100vh;
     margin-left: 280px;
     background-color: var(--primary-bg);
+    position: relative;
+    overflow-x: hidden;
 
 }
 

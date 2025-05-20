@@ -1,61 +1,88 @@
-
-
-
+/* src/index.css */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Raleway:wght@300;400;500;700&display=swap');
 
+/* === TEMEL (AÇIK MOD) RENK PALETİ === */
 :root {
-
-
-    --primary-bg: #0A192F;
-    --secondary-bg: #1C2E4A;
-
-
-    --accent-color: #ffe4b5 ;
-    --accent-color-translucent: rgba(100, 255, 218, 0.3);
-
-
-    --text-color: #CCD6F6;
-    --text-color-light: #E6F1FF;
-    --text-muted: #8892B0;
-
-
-    --border-color: #ffe4b5;
-
-
     --font-primary: 'Poppins', sans-serif;
     --font-secondary: 'Raleway', sans-serif;
+
+
+
+    --primary-bg-light: #F4F7F6;
+    --secondary-bg-light: #FFFFFF;
+    --sidebar-bg-light: #FFFFFF;
+    --text-color-light-theme: #333333;
+    --text-color-light-theme-light: #1a1a1a;
+    --text-muted-light: #555555;
+    --border-color-light: #E0E0E0;
+    --accent-color-light: #007AFF;
+    --accent-color-translucent-light: rgba(0, 122, 255, 0.2);
+
+
+    --primary-bg-dark: #0A192F;
+    --secondary-bg-dark: #112240;
+    --sidebar-bg-dark: #0F1C30;
+    --text-color-dark-theme: #CCD6F6;
+    --text-color-light-theme-dark: #E6F1FF;
+    --text-muted-dark: #8892B0;
+    --border-color-dark: #233554;
+    --accent-color-dark: #64FFDA;
+    --accent-color-translucent-dark: rgba(100, 255, 218, 0.3);
+
+
+
+    --current-primary-bg: var(--primary-bg-dark);
+    --current-secondary-bg: var(--secondary-bg-dark);
+    --current-sidebar-bg: var(--sidebar-bg-dark);
+    --current-text-color: var(--text-color-dark-theme);
+    --current-text-color-light: var(--text-color-light-theme-dark);
+    --current-text-muted: var(--text-muted-dark);
+    --current-border-color: var(--border-color-dark);
+    --current-accent-color: var(--accent-color-dark);
+    --current-accent-color-translucent: var(--accent-color-translucent-dark);
+}
+
+
+body.light-theme {
+    --current-primary-bg: var(--primary-bg-light);
+    --current-secondary-bg: var(--secondary-bg-light);
+    --current-sidebar-bg: var(--sidebar-bg-light);
+    --current-text-color: var(--text-color-light-theme);
+    --current-text-color-light: var(--text-color-light-theme-light);
+    --current-text-muted: var(--text-muted-light);
+    --current-border-color: var(--border-color-light);
+    --current-accent-color: var(--accent-color-light);
+    --current-accent-color-translucent: var(--accent-color-translucent-light);
 }
 
 
 body {
     margin: 0;
     font-family: var(--font-primary);
-    background-color: var(--primary-bg);
-    color: var(--text-color);
+    background-color: var(--current-primary-bg);
+    color: var(--current-text-color);
     line-height: 1.6;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
-
 
 h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-secondary);
-    color: var(--text-color-light);
+    color: var(--current-text-color-light);
     margin-top: 0;
+    transition: color 0.3s ease;
 }
 
-
 a {
-    color: var(--accent-color);
+    color: var(--current-accent-color);
     text-decoration: none;
-    transition: filter 0.3s ease;
+    transition: color 0.3s ease, filter 0.3s ease;
 }
 
 a:hover {
     filter: brightness(0.85);
-
 }
-
 
 
 ::-webkit-scrollbar {
@@ -63,16 +90,20 @@ a:hover {
 }
 
 ::-webkit-scrollbar-track {
-    background: var(--secondary-bg);
-
+    background: var(--current-secondary-bg);
 }
 
 ::-webkit-scrollbar-thumb {
-    background: var(--accent-color);
+    background: var(--current-accent-color);
     border-radius: 5px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
     filter: brightness(0.85);
+}
 
+
+html {
+    scrollbar-width: thin;
+    scrollbar-color: var(--current-accent-color) var(--current-secondary-bg);
 }

@@ -31,11 +31,11 @@
 
 .skill-bar-container {
     width: 100%;
-    background-color: var(--secondary-bg);
+    background-color: #000000;
     border-radius: 5px;
     height: 10px;
     overflow: hidden;
-    border: 1px solid var(--border-color);
+    border: 1px solid #00bfbf ;
 }
 
 .skill-bar-progress {
