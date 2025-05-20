@@ -140,3 +140,31 @@
 .theme-toggle-text {
     font-weight: 500;
 }
+@media (max-width: 992px) {
+    .sidebar {
+        position: fixed; /* Sabit kalmaya devam etsin */
+        left: -280px; /* Başlangıçta ekranın solunda gizli (sidebar genişliği kadar) */
+        /* Eğer sidebar genişliğiniz farklıysa (örn: 250px), burayı -250px yapın */
+        top: 0;
+        height: 100vh; /* Tam ekran yüksekliği */
+        z-index: 1000; /* Diğer içeriklerin üzerinde kalsın (MobileMenuToggle butonundan düşük olmalı) */
+        transition: left 0.3s ease-in-out; /* Açılma/kapanma animasyonu */
+        box-shadow: 2px 0 10px rgba(0,0,0,0.15); /* Açıkken hafif bir gölge */
+        /* Arka plan ve renkler zaten --current-sidebar-bg ve --current-text-muted gibi değişkenlerden geliyor olmalı */
+    }
+
+    .sidebar.open { /* App.js'den isMobileMenuOpen true olduğunda bu class eklenecek */
+        left: 0; /* 'open' class'ı eklendiğinde sidebar'ı görünür yap (sola kaydır) */
+    }
+
+    /* Mobil menü açıkken, sidebar footer'ındaki tema butonu ve telif hakkı yazısı
+       biraz daha düzenli görünebilir. İsteğe bağlı olarak font boyutlarını küçültebilirsiniz. */
+    .sidebar.open .theme-toggle-button {
+        /* font-size: 0.75em; */
+        /* padding: 6px 10px; */
+    }
+    .sidebar.open .copyright-sidebar {
+        /* font-size: 0.75em; */
+    }
+}
+/* ----- MOBİL EKRAN STİLLERİ SONU ----- */

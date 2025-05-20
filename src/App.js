@@ -10,8 +10,7 @@ import SkillsPage from './pages/SkillsPage';
 import PortfolioPage from './pages/PortfolioPage';
 import ContactPage from './pages/ContactPage';
 import Footer from './components/Footer';
-
-
+import MobileMenuToggle from './components/MobileMenuToggle'; // Bu import doğru
 import './assets/styles/AppLayout.css';
 import './index.css';
 
@@ -34,17 +33,15 @@ function AnimatedRoutes() {
             scale: 0.95
         }
     };
-
-
     const pageTransition = {
-        type: "tween", // tween, spring, inertia
-        ease: [0.42, 0, 0.58, 1], // Daha yumuşak bir geçiş için
-        duration: 0.6      // Saniye cinsinden süre (biraz daha hızlı)
+        type: "tween",
+        ease: [0.42, 0, 0.58, 1],
+        duration: 0.6
     };
 
     return (
-        <AnimatePresence mode="wait"> {/* 'wait' modu önemlidir */}
-            <Routes location={location} key={location.pathname}> {/* Routes'a location ve key prop'larını ekleyin */}
+        <AnimatePresence mode="wait">
+            <Routes location={location} key={location.pathname}>
                 <Route
                     path="/"
                     element={
@@ -92,24 +89,44 @@ function AnimatedRoutes() {
 
 function App() {
     const [theme, setTheme] = useState('dark');
+    const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
     const toggleTheme = () => {
         setTheme(prevTheme => (prevTheme === 'light' ? 'dark' : 'light'));
     };
+    const toggleMobileMenu = () => {
+        setIsMobileMenuOpen(!isMobileMenuOpen);
+    };
+
     useEffect(() => {
-        document.body.className = ''; // Önceki tüm class'ları temizle (sadece tema class'ı kalsın diye)
-        document.body.classList.add(theme + '-theme'); // 'light-theme' veya 'dark-theme' class'ını ekle
-        // İsteğe bağlı: Seçilen temayı localStorage'a kaydedebilirsiniz.
-        // localStorage.setItem('theme', theme);
-    }, [theme]); // Bu e
+        document.body.className = '';
+        document.body.classList.add(theme + '-theme');
+        if (isMobileMenuOpen) {
+            document.body.classList.add('mobile-menu-active');
+        } else {
+            document.body.classList.remove('mobile-menu-active');
+        }
+    }, [theme, isMobileMenuOpen]);
+
     return (
-        <Router> {/* BrowserRouter'ı burada kullanıyoruz */}
-            <div className="app-container">
-                <Sidebar theme={theme} toggleTheme={toggleTheme} />
+        <Router>
+            <div className={`app-container ${isMobileMenuOpen ? 'sidebar-open' : ''}`}>
+                {/* Sidebar'a tüm proplar TEK BİR ETİKET İÇİNDE verilmeli */}
+                <Sidebar
+                    theme={theme}
+                    toggleTheme={toggleTheme}
+                    isMobileMenuOpen={isMobileMenuOpen}
+                    toggleMobileMenu={toggleMobileMenu}
+                />
+                {/* Sidebar etiketi burada bitti */}
+
+                <MobileMenuToggle isOpen={isMobileMenuOpen} toggleMenu={toggleMobileMenu} />
+
                 <div className="main-content-wrapper">
-                    <main className="content-area">
-                        <AnimatedRoutes /> {/* Animasyonlu rotaları burada çağırıyoruz */}
+                    <main className="content-area" onClick={isMobileMenuOpen ? toggleMobileMenu : undefined}>
+                        <AnimatedRoutes />
                     </main>
-                    <Footer /> {/* Footer'ımız */}
+                    <Footer />
                 </div>
             </div>
         </Router>

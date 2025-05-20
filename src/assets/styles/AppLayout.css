@@ -1,43 +1,60 @@
-
+/* src/assets/styles/AppLayout.css */
 .app-container {
     display: flex;
 }
 
-
 .main-content-wrapper {
     display: flex;
     flex-direction: column;
-    flex-grow:1;
+    flex-grow: 1;
     min-height: 100vh;
-    margin-left: 280px;
-    background-color: var(--primary-bg);
-    position: relative;
-    overflow-x: hidden;
-
+    background-color: var(--current-primary-bg);
+    overflow-x: hidden; /* Yatay taşmaları engelle */
+    transition: margin-left 0.3s ease-in-out, background-color 0.3s ease;
+    /* Varsayılan olarak (mobil öncelikli veya dar ekranlar için) solda boşluk yok */
+    margin-left: 0;
 }
-
 
 .content-area {
     flex-grow: 1;
     padding: 30px;
-    color: var(--text-color);
-
+    color: var(--current-text-color);
+    transition: color 0.3s ease;
 }
 
+/* MASAÜSTÜ EKRANLAR İÇİN (örneğin 993px ve üzeri) */
+/* Bu breakpoint değeri, mobil için kullandığınız max-width değerinden 1px büyük olmalı */
+@media (min-width: 993px) {
+    .main-content-wrapper {
+        /* Sidebar genişliği kadar soldan boşluk */
+        margin-left: 280px; /* Bu değer Sidebar.css'teki .sidebar width ile aynı olmalı */
+    }
+}
 
-
-
+/* MOBİL EKRANLAR İÇİN (örneğin 992px ve altı) */
+/* Bu blok aslında yukarıdaki varsayılan margin-left: 0; nedeniyle gereksiz bile olabilir,
+   ancak mobil için özel başka ayarlarınız varsa burada kalabilir.
+   Eğer sadece margin-left içinse, .main-content-wrapper'ın ana tanımındaki margin-left:0; yeterlidir. */
 @media (max-width: 992px) {
     .main-content-wrapper {
-        margin-left: 0;
+        margin-left: 0; /* Mobilde sidebar gizlendiği/üstüne geldiği için soldaki boşluğu kaldır (tekrar teyit) */
     }
-
-
 }
 
-
+/* Daha küçük mobil ekranlar için (isteğe bağlı) */
 @media (max-width: 576px) {
     .content-area {
         padding: 20px;
     }
 }
+
+/*
+  TARAYICI GELİŞTİRİCİ ARAÇLARI İLE KONTROL:
+  1. Masaüstü görünümündeyken F12 ile geliştirici araçlarını açın.
+  2. "Elements" (Öğeler) sekmesinde, class'ı "main-content-wrapper" olan div'i seçin.
+  3. Sağdaki "Styles" (Stiller) panelinde, bu div'e hangi `margin-left` değerinin uygulandığını kontrol edin.
+     - Eğer `margin-left: 280px;` görünüyorsa ve üzeri çizili değilse, doğru uygulanıyor demektir.
+     - Eğer `margin-left: 0;` görünüyorsa veya `280px` üzeri çiziliyse, başka bir CSS kuralı onu eziyor olabilir
+       veya @media sorgunuz beklediğiniz gibi çalışmıyor olabilir.
+     - "Computed" (Hesaplanan) sekmesinden de son `margin-left` değerini görebilirsiniz.
+*/

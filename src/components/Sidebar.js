@@ -18,15 +18,20 @@ import {
     FaMoon
 } from 'react-icons/fa';
 
-function Sidebar({theme, toggleTheme}) {
+function Sidebar({ theme, toggleTheme, isMobileMenuOpen, toggleMobileMenu }) {
 
     const githubUsername = "Runoxd";
     const twitterUsername = "oonur_ozdmr";
     const facebookUsername = "Onur Özdemir  ";
     const linkedinUsername = "/onur-özdemir-012516253/";
     const instagramUsername = "onur_o_zdmr";
+    const handleNavLinkClick = () => {
+           if (isMobileMenuOpen) { // Sadece mobil menü açıksa çalışır
+                  toggleMobileMenu(); // App.js'den gelen menüyü kapatma fonksiyonunu çağırır
+               }
+          };
     return (
-        <aside className="sidebar">
+        <aside className={`sidebar ${isMobileMenuOpen ? 'open' : ''}`}>
             <div className="sidebar-header">
                 {}
                 <img src={profilResmi} className="sidebar-profile-image" />
@@ -36,43 +41,27 @@ function Sidebar({theme, toggleTheme}) {
             <nav>
                 <ul>
                     <li>
-                        <NavLink
-                            to="/"
-                            className={({ isActive }) => (isActive ? "active-link" : "")}
-                            end
-                        >
+                        <NavLink to="/" className={({isActive}) => isActive ? "active-link" : ""} end onClick={handleNavLinkClick}>
                             <FaHome /> Ana Sayfa
                         </NavLink>
                     </li>
                     <li>
-                        <NavLink
-                            to="/ben-kimim"
-                            className={({ isActive }) => (isActive ? "active-link" : "")}
-                        >
+                        <NavLink to="/ben-kimim" className={({isActive}) => isActive ? "active-link" : ""} onClick={handleNavLinkClick}>
                             <FaUser /> Ben Kimim?
                         </NavLink>
                     </li>
                     <li>
-                        <NavLink
-                            to="/neler-yapabilirim"
-                            className={({ isActive }) => (isActive ? "active-link" : "")}
-                        >
+                        <NavLink to="/neler-yapabilirim" className={({isActive}) => isActive ? "active-link" : ""} onClick={handleNavLinkClick}>
                             <FaCog /> Neler Yapabilirim?
                         </NavLink>
                     </li>
                     <li>
-                        <NavLink
-                            to="/portfolyo"
-                            className={({ isActive }) => (isActive ? "active-link" : "")}
-                        >
+                        <NavLink to="/portfolyo" className={({isActive}) => isActive ? "active-link" : ""} onClick={handleNavLinkClick}>
                             <FaBriefcase /> Portfolyo
                         </NavLink>
                     </li>
                     <li>
-                        <NavLink
-                            to="/iletisim"
-                            className={({ isActive }) => (isActive ? "active-link" : "")}
-                        >
+                        <NavLink to="/iletisim" className={({isActive}) => isActive ? "active-link" : ""} onClick={handleNavLinkClick}>
                             <FaEnvelope /> İletişim
                         </NavLink>
                     </li>
