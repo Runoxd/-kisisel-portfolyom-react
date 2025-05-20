@@ -1,6 +1,8 @@
+
+
 .sidebar {
     width: 280px;
-    background-color: #696969 ;
+    background-color:#696969;
     color: #ffe4b5;
     display: flex;
     flex-direction: column;
@@ -8,18 +10,24 @@
     position: fixed;
     left: 0;
     top: 0;
-    padding: 20px;
+    padding: 25px 20px;
     box-sizing: border-box;
-    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+    border-right: 1px solid var(--current-border-color);
+    overflow-x: hidden;
+    overflow-y: auto;
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, left 0.3s ease-in-out;
 }
 
 .sidebar-header {
     text-align: center;
-    margin-bottom: 30px;
-    padding-bottom: 20px;
-    border-bottom: 1px solid #222;
+    margin-bottom: 25px;
+    padding-bottom: 25px;
+    border-bottom: 1px solid var(--current-border-color);
+    cursor: pointer;
     transition: border-color 0.3s ease;
+    flex-shrink: 0;
 }
+
 .sidebar-profile-image {
     width: 200px;
     height: 200px;
@@ -27,21 +35,31 @@
     object-fit: cover;
     margin-bottom: 15px;
     border: 3px solid #000000;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
     transition: border-color 0.3s ease;
 }
 
 .sidebar-header h2 {
     color: #09f7ef;
-    margin: 0 0 5px 0;
-    font-size: 1.5em;
+    margin: 0 0 8px 0;
+    font-size: 1.6em;
+    font-weight: 600;
+    font-family: var(--font-secondary);
     transition: color 0.3s ease;
 }
 
 .sidebar-header p {
+    color: #ffe4b5;
     font-size: 0.9em;
     margin: 0;
+    font-family: var(--font-primary);
     transition: color 0.3s ease;
+}
+
+.sidebar nav {
+    flex-grow: 1;
+    overflow-y: auto;
+
 }
 
 .sidebar nav ul {
@@ -53,70 +71,75 @@
 .sidebar nav li a {
     display: flex;
     align-items: center;
-    color: #ffe4b5;
+    color:#ffe4b5;
     text-decoration: none;
-    padding: 12px 15px;
+    padding: 13px 18px;
     margin-bottom: 8px;
-    border-radius: 5px;
+    border-radius: 25px;
     transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease;
+    font-weight: 500;
+    font-size: 0.95rem;
 }
 
 .sidebar nav li a svg {
-    margin-right: 10px;
-    font-size: 1.1em;
+    margin-right: 12px;
+    font-size: 1.2em;
     transition: color 0.3s ease;
+    flex-shrink: 0;
 }
 
-.sidebar nav li a:hover,
+.sidebar nav li a:hover {
+    color: #ffe4b5;
+    background-color: #000000;
+    transform: translateX(5px);
+}
+.sidebar nav li a:hover svg {
+    color: #ffe4b5;
+}
 
 .sidebar nav li a.active-link {
+    color:#ffe4b5  ;
     background-color: #000000;
+    font-weight: 600;
+}
+
+.sidebar nav li a.active-link svg {
     color: #ffe4b5;
 }
 
 .sidebar-footer {
-    margin-top: auto;
+    margin-top: 15px;
+    padding-top: 15px;
+    border-top: 1px solid var(--current-border-color);
     text-align: center;
-    font-size: 0.8em;
-    padding-top: 20px;
-    border-top: 1px solid #222;
     transition: border-color 0.3s ease;
-
+    flex-shrink: 0;
 }
+
 .social-icons-sidebar {
     margin-bottom: 15px;
-    text-align: center;
 }
 
 .social-icons-sidebar a {
-    color:#09f7ef;
-    font-size: 1.3rem;
+    color: #09f7ef;
+    font-size: 1.4rem;
     margin: 0 10px;
-    transition: color 0.3s ease;
+    transition: color 0.3s ease, transform 0.3s ease;
 }
 
 .social-icons-sidebar a:hover {
     color: #ffe4b5;
-}
-
-.copyright-sidebar {
-    text-align: center;
-    font-size: 0.8em;
-    color: #09f7ef;
-    margin-top: auto;
-    transition: color 0.3s ease;
-
+    transform: scale(1.2);
 }
 
 .theme-toggle-button {
     background-color: #000000;
     color: #ffe4b5;
-    border: 1px solid #ffe4b5;
+    border:#ffe4b5 ;
     padding: 8px 12px;
     border-radius: 20px;
     cursor: pointer;
     font-size: 0.8em;
-    margin-top: 15px;
     margin-bottom: 15px;
     display: inline-flex;
     align-items: center;
@@ -140,31 +163,28 @@
 .theme-toggle-text {
     font-weight: 500;
 }
+
+.copyright-sidebar {
+    color: var(--current-text-muted);
+    font-size: 0.8em;
+    margin: 0;
+    transition: color 0.3s ease;
+}
+
+
 @media (max-width: 992px) {
     .sidebar {
-        position: fixed; /* Sabit kalmaya devam etsin */
-        left: -280px; /* Başlangıçta ekranın solunda gizli (sidebar genişliği kadar) */
-        /* Eğer sidebar genişliğiniz farklıysa (örn: 250px), burayı -250px yapın */
+        position: fixed;
+        left: -280px;
         top: 0;
-        height: 100vh; /* Tam ekran yüksekliği */
-        z-index: 1000; /* Diğer içeriklerin üzerinde kalsın (MobileMenuToggle butonundan düşük olmalı) */
-        transition: left 0.3s ease-in-out; /* Açılma/kapanma animasyonu */
-        box-shadow: 2px 0 10px rgba(0,0,0,0.15); /* Açıkken hafif bir gölge */
-        /* Arka plan ve renkler zaten --current-sidebar-bg ve --current-text-muted gibi değişkenlerden geliyor olmalı */
+        height: 100vh;
+        z-index: 1000;
+
+        box-shadow: 2px 0 10px rgba(0,0,0,0.15);
     }
 
-    .sidebar.open { /* App.js'den isMobileMenuOpen true olduğunda bu class eklenecek */
-        left: 0; /* 'open' class'ı eklendiğinde sidebar'ı görünür yap (sola kaydır) */
-    }
-
-    /* Mobil menü açıkken, sidebar footer'ındaki tema butonu ve telif hakkı yazısı
-       biraz daha düzenli görünebilir. İsteğe bağlı olarak font boyutlarını küçültebilirsiniz. */
-    .sidebar.open .theme-toggle-button {
-        /* font-size: 0.75em; */
-        /* padding: 6px 10px; */
-    }
-    .sidebar.open .copyright-sidebar {
-        /* font-size: 0.75em; */
+    .sidebar.open {
+        left: 0;
     }
 }
-/* ----- MOBİL EKRAN STİLLERİ SONU ----- */
+

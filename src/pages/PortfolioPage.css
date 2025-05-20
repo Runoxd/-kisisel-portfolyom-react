@@ -99,20 +99,20 @@
     display: inline-block;
     margin-top: 10px;
     padding: 5px 10px;
-    border: 1px solid var(--accent-color);
+        border: 1px solid #ffe4b5;
     border-radius: 4px;
     transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .lightbox-project-link:hover {
-    background-color: var(--accent-color);
-    color: var(--primary-bg, #0A192F);
+    background-color: #ffe4b5;
+    color: #0A192F;
     text-decoration: none;
 }
 
 
 .portfolio-page .text-center {
-    color: var(--text-muted, #B0B0B0);
+    color:  #B0B0B0;
     font-style: italic;
     padding: 20px;
 }

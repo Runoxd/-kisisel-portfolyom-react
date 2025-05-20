@@ -1,30 +1,29 @@
-/* src/components/MobileMenuToggle.css */
 .mobile-menu-toggle {
-    display: none; /* Varsayılan olarak gizli, sadece mobilde görünecek */
+    display: none;
     position: fixed;
-    top: 20px; /* Biraz daha aşağı aldım, Sidebar'daki profil resmiyle çakışmasın diye */
-    left: 20px; /* Biraz daha sağa aldım */
-    z-index: 1100; /* Sidebar'dan (z-index: 1000) ve diğer her şeyden üstte olsun */
+    top: 20px;
+    left: 20px;
+    z-index: 1100;
     background-color: var(--current-accent-color);
-    color: var(--current-primary-bg); /* Kontrast için */
+    color: var(--current-primary-bg);
     border: none;
-    padding: 0; /* Padding'i sıfırlayıp width/height ile tam boyut verelim */
+    padding: 0;
     width: 45px;
     height: 45px;
     border-radius: 50%;
     cursor: pointer;
-    font-size: 1.4rem; /* İkon boyutu */
+    font-size: 1.4rem;
     box-shadow: 0 2px 5px rgba(0,0,0,0.2);
     transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
-    /* İkonu tam ortalamak için flex ayarları */
-    display: flex; /* BU SATIRI @media İÇİNE TAŞIYACAĞIZ veya @media içinde tekrar tanımlayacağız */
+
+    display: flex;
     align-items: center;
     justify-content: center;
 }
 
-/* Düzeltilmiş Hali */
+
 .mobile-menu-toggle {
-    display: none; /* Varsayılan olarak KESİNLİKLE GİZLİ */
+    display: none;
     position: fixed;
     top: 20px;
     left: 20px;
@@ -39,7 +38,7 @@
     font-size: 1.4rem;
     box-shadow: 0 2px 5px rgba(0,0,0,0.2);
     transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
-    /* Flex ayarları @media içinde olacak */
+
 }
 
 
@@ -48,10 +47,10 @@
     filter: brightness(0.9);
 }
 
-/* Mobil ekranlar için (örneğin 992px altı) */
-@media (max-width: 992px) { /* Bu breakpoint AppLayout.css ve Sidebar.css'teki ile aynı olmalı */
+
+@media (max-width: 992px) {
     .mobile-menu-toggle {
-        display: flex; /* Sadece mobilde görünür yap ve flex ile ikon ortalansın */
+        display: flex;
         align-items: center;
         justify-content: center;
     }

@@ -1,4 +1,3 @@
-// src/App.js
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import { AnimatePresence, motion } from 'framer-motion';
@@ -111,14 +110,14 @@ function App() {
     return (
         <Router>
             <div className={`app-container ${isMobileMenuOpen ? 'sidebar-open' : ''}`}>
-                {/* Sidebar'a tüm proplar TEK BİR ETİKET İÇİNDE verilmeli */}
+                {}
                 <Sidebar
                     theme={theme}
                     toggleTheme={toggleTheme}
                     isMobileMenuOpen={isMobileMenuOpen}
                     toggleMobileMenu={toggleMobileMenu}
                 />
-                {/* Sidebar etiketi burada bitti */}
+                {}
 
                 <MobileMenuToggle isOpen={isMobileMenuOpen} toggleMenu={toggleMobileMenu} />
 

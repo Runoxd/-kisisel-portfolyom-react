@@ -95,15 +95,15 @@ function Sidebar({ theme, toggleTheme, isMobileMenuOpen, toggleMobileMenu }) {
                         </a>
                     )}
                 </div>
-                {/* ----- TEMA DEĞİŞTİRME BUTONU ----- */}
+                {}
                 <button
-                         onClick={toggleTheme} // App.js'den gelen fonksiyonu çağırır
+                         onClick={toggleTheme}
                         className="theme-toggle-button"
-                         title={theme === 'light' ? 'Koyu Moda Geç' : 'Açık Moda Geç'} // Buton üzerine gelince çıkan yazı
-                         aria-label="Tema Değiştir" // Erişilebilirlik için
-                >{theme === 'light' ? <FaMoon /> : <FaSun />} {/* Mevcut temaya göre ikonu gösterir */}
-                    <span className="theme-toggle-text"> {/* İkonun yanındaki metin için */}
-                        {theme === 'light' ? 'Koyu Mod' : 'Açık Mod'} {/* Mevcut temaya göre metni gösterir */}
+                         title={theme === 'light' ? 'Koyu Moda Geç' : 'Açık Moda Geç'}
+                         aria-label="Tema Değiştir"
+                >{theme === 'light' ? <FaMoon /> : <FaSun />} {}
+                    <span className="theme-toggle-text"> {}
+                        {theme === 'light' ? 'Koyu Mod' : 'Açık Mod'} {}
                     </span>
                 </button>
 
