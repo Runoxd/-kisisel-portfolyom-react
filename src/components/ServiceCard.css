@@ -1,0 +1,58 @@
+/* src/components/ServiceCard.css */
+
+/* .service-card-link ile ilgili stiller kaldırıldı veya yorumlandı */
+/*
+.service-card-link {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.service-card-link:hover .service-card {
+  transform: translateY(-10px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+*/
+
+.service-card {
+    background-color: var(--secondary-bg); /* Veya özel bir kart arka plan rengi */
+    padding: 30px 25px;
+    border-radius: 8px;
+    text-align: center;
+    border: 1px solid #ffe4b5;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
+    box-sizing: border-box;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.service-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.service-icon {
+    color: #ffe4b5;
+    margin-bottom: 20px;
+}
+
+.service-icon svg {
+    font-size: 2.5em;
+}
+
+.service-title {
+    font-size: 1.3rem;
+    color: var(--text-color-light);
+    margin-bottom: 10px;
+    font-family: var(--font-secondary);
+}
+
+.service-description {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    line-height: 1.6;
+    flex-grow: 1;
+}

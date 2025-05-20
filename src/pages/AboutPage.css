@@ -1,0 +1,139 @@
+
+.about-page {
+    position: relative;
+    padding-top: 60px;
+    padding-bottom: 60px;
+    padding-left: 30px;
+    padding-right: 30px;
+    min-height: 100vh;
+    box-sizing: border-box;
+
+
+    background-image: url('../assets/images/about-bg.jpg');
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+
+
+}
+
+
+.about-page::before {
+    content: "";
+    top:0;
+    left:0;
+    right: 0;
+    bottom: 0;
+
+    background-color: rgba(0, 0, 0, 0.6);
+    z-index: 0;
+}
+
+
+.about-page > * {
+    position: relative;
+    z-index: 1;
+}
+
+
+
+.about-page h1 {
+
+    color: #97ffff;
+    margin-bottom: 40px;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.3);
+    padding-bottom: 10px;
+}
+
+.about-text h2 {
+    font-size: 1.8rem;
+    color: #ffe400;
+    margin-bottom: 20px;
+}
+
+.about-text h2 .highlight {
+    color: #ffe400;
+
+}
+
+.about-text p {
+    font-size: 1rem;
+    line-height: 1.7;
+    color: #ffe400;
+    margin-bottom: 15px;
+}
+
+.personal-details {
+    list-style: none;
+    padding: 0;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+.personal-details li {
+    margin-bottom: 12px;
+    font-size: 1rem;
+    color: #09f7ef;
+}
+
+.personal-details li strong {
+    color: #483d8b;
+    min-width: 120px;
+    display: inline-block;
+}
+
+.personal-details li a {
+    color: #ffe400;
+    text-decoration: none;
+}
+
+.personal-details li a:hover {
+    text-decoration: underline;
+}
+
+.about-content-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 40px;
+    align-items: flex-start;
+}
+
+.cv-button {
+    margin-top: 10px;
+
+}
+
+.about-image img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+    border: 3px solid rgba(255, 255, 255, 0.5);
+}
+
+@media (max-width: 992px) {
+    .about-content-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+    .about-image {
+        order: -1;
+        margin-bottom: 30px;
+        justify-content: center;
+    }
+    .about-image img {
+        max-width: 250px;
+    }
+}
+
+@media (max-width: 768px) {
+    .about-text h2 {
+        font-size: 1.6rem;
+    }
+    .personal-details li {
+        font-size: 0.9rem;
+    }
+    .personal-details li strong {
+        min-width: 100px;
+    }
+}
